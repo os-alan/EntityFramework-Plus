@@ -293,11 +293,13 @@ foreach(var entry in entries)
 					<div class="col-lg-7">
 {% highlight csharp %}
 // DELETE all users inactive for 2 years
-ctx.Users.Where(x => x.LastLoginDate < DateTime.Now.AddYears(-2))
+var date = DateTime.Now.AddYears(-2);
+ctx.Users.Where(x => x.LastLoginDate < date)
          .Delete();
 
 // DELETE using a BatchSize
-ctx.Users.Where(x => x.LastLoginDate < DateTime.Now.AddYears(-2))
+var date = DateTime.Now.AddYears(-2);
+ctx.Users.Where(x => x.LastLoginDate < date)
          .Delete(x => x.BatchSize = 1000);
 {% endhighlight %}	
 					</div>
@@ -320,7 +322,8 @@ ctx.Users.Where(x => x.LastLoginDate < DateTime.Now.AddYears(-2))
 					<div class="col-lg-7">
 {% highlight csharp %}
 // UPDATE all users inactive for 2 years
-ctx.Users.Where(x => x.LastLoginDate < DateTime.Now.AddYears(-2))
+var date = DateTime.Now.AddYears(-2);
+ctx.Users.Where(x => x.LastLoginDate < date)
          .Update(x => new User() { IsSoftDeleted = 1 });
 {% endhighlight %}	
 					</div>
